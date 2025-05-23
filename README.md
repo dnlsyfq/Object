@@ -99,10 +99,121 @@ pet2.make_noise() # Maisy says, Meow!
 ```
 
 ### super()
-When overriding methods we sometimes want to still access the behavior of the parent method. In order to do that we need a way to call the method of the parent class. Python gives us a way to do that using 
-Preview: Docs Loading link description
-super()
-.
+When overriding methods we sometimes want to still access the behavior of the parent method. In order to do that we need a way to call the method of the parent class. 
 
 super() gives us a proxy object. With this proxy object, we can invoke the method of an object’s parent class (also called its superclass). We call the required function as a method on super()
 
+```
+class Animal:
+  def __init__(self, name, sound="Grrrr"):
+    self.name = name
+    self.sound = sound
+
+  def make_noise(self):
+    print("{} says, {}".format(self.name, self.sound))
+
+class Cat(Animal):
+  def __init__(self, name):
+    super().__init__(name, "Meow!") 
+
+pet_cat = Cat("Rachel")
+pet_cat.make_noise() # Rachel says, Meow!
+
+```
+
+```
+class Employee():
+  new_id = 1
+  def __init__(self):
+    self.id = Employee.new_id
+    Employee.new_id += 1
+
+  def say_id(self):
+    print("My id is {}.".format(self.id))
+
+class Admin(Employee):
+  def say_id(self):
+    # Write your code below:
+    super().say_id()
+    print("I am an admin.")
+
+e1 = Employee()
+e2 = Employee()
+e3 = Admin()
+e3.say_id()
+
+```
+
+### Multiple Inheritance
+
+```
+class Animal:
+  def __init__(self, name):
+    self.name = name
+ 
+  def say_hi(self):
+    print("{} says, Hi!".format(self.name))
+
+class Cat(Animal):
+  pass
+
+class Angry_Cat(Cat):
+  pass
+
+my_pet = Angry_Cat("Mr. Cranky")
+my_pet.say_hi() # Mr. Cranky says, Hi!
+
+```
+
+```
+class Employee():
+  new_id = 1
+  def __init__(self):
+    self.id = Employee.new_id
+    Employee.new_id += 1
+
+  def say_id(self):
+    print("My id is {}.".format(self.id))
+
+class Admin(Employee):
+  def say_id(self):
+    super().say_id()
+    print("I am an admin.")
+
+# Write your code below
+class Manager(Admin):
+  def say_id(self):
+    print("We are ub charge.")
+    super().say_id()
+
+
+e1 = Employee()
+e2 = Employee()
+e3 = Admin()
+e4 = Manager()
+e4.say_id()
+```
+
+```
+class Animal:
+  def __init__(self, name):
+    self.name = name
+
+class Dog(Animal):
+  def action(self):
+    print("{} wags tail. Awwww".format(self.name))
+
+class Wolf(Animal):
+  def action(self):
+    print("{} bites. OUCH!".format(self.name))
+
+class Hybrid(Dog, Wolf):
+  def action(self):
+    super().action()
+    Wolf.action(self)
+
+my_pet = Hybrid("Fluffy")
+my_pet.action() # Fluffy wags tail. Awwww
+                # Fluffy bites. OUCH!
+
+```
