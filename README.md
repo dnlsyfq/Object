@@ -217,3 +217,104 @@ my_pet.action() # Fluffy wags tail. Awwww
                 # Fluffy bites. OUCH!
 
 ```
+
+```
+class Employee():
+  new_id = 1
+  def __init__(self):
+    self.id = Employee.new_id
+    Employee.new_id += 1
+
+  def say_id(self):
+    print("My id is {}.".format(self.id))
+
+class User:
+  def __init__(self, username, role="Customer"):
+    self.username = username
+    self.role = role
+
+  def say_user_info(self):
+    print("My username is {}".format(self.username))
+    print("My role is {}".format(self.role))
+
+# Write your code below
+class Admin(Employee, User):
+  def __init__(self):
+    super().__init__()
+    User.__init__(self,self.id,"Admin")
+    
+
+  def say_id(self):
+    super().say_id()
+    print("I am an admin.")
+
+e1 = Employee()
+e2 = Employee()
+e3 = Admin()
+e3.say_user_info()
+
+```
+
+### Polymorphism
+polymorphism is the ability to apply an identical operation onto different types of objects. 
+
+```
+class Animal:
+  def __init__(self, name):
+    self.name = name
+
+  def make_noise(self):
+    print("{} says, Grrrr".format(self.name))
+
+class Cat(Animal):
+
+  def make_noise(self):
+    print("{} says, Meow!".format(self.name))
+
+class Robot:
+  
+  def make_noise(self):
+    print("beep.boop...BEEEEP!!!")
+
+
+
+an_animal = Animal("Bear")
+my_pet = Cat("Maisy")
+my_vacuum = Robot()
+objects = [an_animal, my_pet, my_vacuum]
+for o in objects:
+  o.make_noise()
+
+# OUTPUT
+# "Bear says, Grrrr"
+# "Maisy says, Meow!"
+# "beep.boop...BEEEEP!!!"
+
+```
+
+```
+class Employee():
+  new_id = 1
+  def __init__(self):
+    self.id = Employee.new_id
+    Employee.new_id += 1
+
+  def say_id(self):
+    print("My id is {}.".format(self.id))
+
+class Admin(Employee):
+  def say_id(self):
+    super().say_id()
+    print("I am an admin.")
+
+class Manager(Admin):
+  def say_id(self):
+    super().say_id()
+    print("I am in charge!")
+
+# Write your code below
+meeting = [Employee(),Admin(),Manager()]
+
+for o in meeting:
+  o.say_id()
+```
