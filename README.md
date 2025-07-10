@@ -1,5 +1,4 @@
-###
-Object Literal
+### Object Literal
 ```
 let returnAnyProp = (objectName, propName) => objectName[propName];
  
@@ -29,7 +28,112 @@ delete spaceship.mission;  // Removes the mission property
 
 ```
 
+### obj lateral , method 
+When the data stored on an object is a function, we call that a 
+Preview: Docs Methods are object properties that contain functions.
+method
 
+For example, console is a global JavaScript object and .log() is a method on that object. Math is also a global JavaScript object, and .floor() is a method on it.
+```
+const alienShip = {
+  invade: function () { 
+    console.log('Hello! We have come to dominate your planet. Instead of Earth, it shall be called New Xaculon.')
+  },
+  // ES6
+   invade () { 
+    console.log('Hello! We have come to dominate your planet. Instead of Earth, it shall be called New   Xaculon.')
+  }
+};
+
+```
+
+### obj lateral , nested
+```
+const spaceship = {
+  telescope: {
+    yearBuilt: 2018,
+    model: '91031-XLT',
+    focalLength: 2032 
+  },
+  crew: {
+    captain: { 
+      name: 'Sandra', 
+      degree: 'Computer Engineering', 
+      encourageTeam() { console.log('We got this!') } 
+    }
+  },
+  engine: {
+    model: 'Nimbus2000'
+  },
+  nanoelectronics: {
+    computer: {
+      terabytes: 100,
+      monitors: 'HD'
+    },
+    'back-up': {
+      battery: 'Lithium',
+      terabytes: 50
+    }
+  }
+}; 
+
+```
+
+### obj lateral , reassign
+```
+let spaceship = {
+  'Fuel Type' : 'Turbo Fuel',
+  homePlanet : 'Earth'
+};
+
+// Write your code below
+function greenEnergy(obj){
+  obj['Fuel Type'] = 'avocado oil'
+}
+
+function remotelyDisable(obj){
+  obj.disabled = true;
+}
+
+greenEnergy(spaceship);
+
+remotelyDisable(spaceship);
+
+console.log(spaceship);
+```
+
+### obj lateral
+```
+let spaceship = {
+  crew: {
+    captain: { 
+      name: 'Lily', 
+      degree: 'Computer Engineering', 
+      cheerTeam() { console.log('You got this!') } 
+    },
+    'chief officer': { 
+      name: 'Dan', 
+      degree: 'Aerospace Engineering', 
+      agree() { console.log('I agree, captain!') } 
+    },
+    medic: { 
+      name: 'Clementine', 
+      degree: 'Physics', 
+      announce() { console.log(`Jets on!`) } },
+    translator: {
+      name: 'Shauna', 
+      degree: 'Conservation Science', 
+      powerFuel() { console.log('The tank is full!') } 
+    }
+  }
+}; 
+
+// for...in
+for (let crewMember in spaceship.crew) {
+  console.log(`${crewMember}: ${spaceship.crew[crewMember].name}`);
+}
+
+```
 
 ### Object
 ```
