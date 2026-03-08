@@ -1,3 +1,26 @@
+### Constructor
+
+```
+class ExampleClass:
+
+      def __init__(self,string):
+         print(string)
+
+test = ExampleClass('Hi') // The init function ran immediately, displaying the text "Hola!"
+```
+
+ Like methods, we access attributes using dot notation, but attributes don't have parentheses like methods do. Let's use dot notation to access the attribute
+```
+class ExampleClass:
+
+    def __init__(self, string):
+        self.my_attribute = string
+
+mc = ExampleClass("Hola!")
+
+
+```
+
 ### Object Literal
 ```
 let returnAnyProp = (objectName, propName) => objectName[propName];
