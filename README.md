@@ -18,7 +18,7 @@ class ExampleClass:
 
 mc = ExampleClass("Hola!")
 
-
+print(mc.my_attribute)
 ```
 
 ### Object Literal
